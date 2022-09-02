@@ -16,6 +16,7 @@ RUN grunt prod
 FROM nginx:1.19.3
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /usr/src/app/dist/community-app /usr/share/nginx/html
+RUN chown -R $UID:$GID /var/cache/nginx/client_temp
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
