@@ -13,8 +13,8 @@ RUN npm install
 RUN bundle install
 RUN grunt prod
 
-FROM nginxinc/nginx-unprivileged:latest
-# COPY nginx.conf /etc/nginx/nginx.conf
+FROM nginxinc/nginx-unprivileged
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /usr/src/app/dist/community-app /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
