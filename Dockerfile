@@ -16,5 +16,5 @@ RUN grunt prod
 FROM nginxinc/nginx-unprivileged
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /usr/src/app/dist/community-app /usr/share/nginx/html
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
